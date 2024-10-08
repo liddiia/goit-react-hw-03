@@ -1,10 +1,11 @@
 import ContactItem from "./ContactItem"
 
+import css from './Contact.module.css'
 
 const ContactList = ({key,name,number}) => {
   return (
-    <div>
-        <ul>
+    <div className={css.listBox}>
+        <ul >
         <ContactItem
         key={key}
       name={name}

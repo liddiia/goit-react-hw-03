@@ -6,8 +6,8 @@
 
 .filterInput{
 padding: 8px;
-
-
+border-radius: 5px;
+border: 1px solid green;
 }
 .filterText{
 font-size: 16px;

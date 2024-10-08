@@ -3,7 +3,7 @@ import css from "./ContactForm.module.css";
 const ContactForm = ({onAddContact}) => {
 
   const handleSubmit=(ev)=> {
-    ev.preventDefaault();
+    ev.preventDefault();
   
     const form = ev.currentTarget;
     console.log('form:', form);

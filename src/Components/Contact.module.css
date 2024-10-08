@@ -1,0 +1,31 @@
+.listBox{ display: flex;
+/* border: 1px solid red; */
+margin: 20px auto;
+padding: 5px;
+/* border-radius: 5px; */
+
+}
+.contactItem{
+    display: flex;
+color: black;
+border: 1px solid rgb(255, 0, 187);
+border-radius: 5px;
+padding: auto;
+}
+.contactItemData{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.contactDelButton{
+   color: red;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid red;
+}
+
+.contactDelButton:hover, .contactDelButton:focus{
+    background-color: red;
+    color: white;
+    
+}

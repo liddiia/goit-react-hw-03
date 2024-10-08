@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { nanoid } from 'nanoid'
 
 import ContactForm from './Components/ContactForm'
-import SearchBox from './Components/SearchBox'
+//import SearchBox from './Components/SearchBox'
 import ContactList from './Components/ContactList'
 import './App.css'
 
@@ -29,8 +29,7 @@ setContacts([...contacts, finalContact])
 return (
      <div>
   <h1>Phonebook</h1>
-
-  <SearchBox/>
+ {/* <SearchBox/> */}
 <ContactForm  onAddContact={onAddContact}/> 
 
 {contacts.map((contact)=>{
