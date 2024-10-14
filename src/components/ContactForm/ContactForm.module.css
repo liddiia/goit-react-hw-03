@@ -9,7 +9,9 @@ border-radius: 20px;
 border: 1px solid blue;
 margin: 0 auto;
 }
-
+.error{
+    color: rgb(235, 13, 13);
+}
 .formLabel{
     display: flex;
     flex-direction: column;
