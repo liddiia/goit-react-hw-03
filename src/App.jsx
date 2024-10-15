@@ -6,6 +6,7 @@ import ContactList from "./components/ContactList/ContactList"
 import { nanoid } from 'nanoid';
 
 
+
 const ContactData = [
   {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
   {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
@@ -15,6 +16,7 @@ const ContactData = [
 
 const App = () => {
   const [contacts, setContacts]= useState(ContactData);
+
     // ()=>{JSON.parse(localStorage.getItem('contactsItem')) ?? ContactData });
  
     // useEffect(() => {
@@ -22,31 +24,40 @@ const App = () => {
     //   localStorage.setItem('contactsItem', stringifiteContactsItem);
     // }, [contacts]);
     // 
+    const [filter, setFilter] = useState('');
+
   const onAddContact =(formData) =>{
     const newContact = {
       ...formData,
       id: nanoid(),
     };
     setContacts((prevState) => [...prevState, newContact]);
-  };// const onAddProfile = (formData) => {
-    //   const finalUser = {
-    //     ...formData,
-    //     id: nanoid(), }; 
-    //   setUsers((prevState) => [...prevState, finalUser]);};
-  const DelContact = (contactId)=>{
-    const updatedContacts = contacts.filter((contact) => contact.id !== contactId);
-      setContacts(updatedContacts);};
+  };
 
-    
+  const DelContact = (contactId) => {
+    setContacts(contacts.filter((contact) => contactId !== contact.id))
+    }
 
-
+    // onClick={() => {
+    //   setArtists(
+    //     artists.filter(a =>
+    //       a.id !== artist.id
+    //     )
+    //   );
+    // }}
+    // const filteredUsers = contacts.filter(
+    //   (contact) =>
+    //     contact.name.toLowerCase().includes(filter.toLowerCase().trim())      );
+  
 
   return (
     <div>
-       <h1>Phonebook</h1>
+       <h1 style={{textAlign:"center"}}>Phonebook</h1>
      <ContactForm onAddContact={onAddContact} />
      
-     <SearchBox />  
+     <SearchBox 
+     value={filter} 
+     onFilter={setFilter}/>  
       
       <ContactList contacts={contacts}
       DelContact={DelContact}/>

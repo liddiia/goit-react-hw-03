@@ -1,16 +1,22 @@
 .contactItem{
-    display: flex;
-    
+ 
+   max-width: 400px; 
 color: black;
 border: 1px solid rgb(255, 0, 187);
 border-radius: 5px;
-padding: auto;
+
 }
 .contactItemData{
     display: flex;
     flex-direction: column;
     gap: 5px;
+    
 }
+.contactN{
+padding: 6px;
+margin: 0;
+}
+
 .contactItemTitel{
     font-size: 18px;
     color: brown;
@@ -21,7 +27,7 @@ padding: auto;
      padding: 10px;
      border-radius: 5px;
      border: 1px solid red;
-     margin: 0 auto;
+   
 
  }
 

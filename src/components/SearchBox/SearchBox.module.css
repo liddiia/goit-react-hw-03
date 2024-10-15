@@ -9,9 +9,11 @@
 padding: 8px;
 border-radius: 5px;
 border: 1px solid green;
+width: 95%;
 }
 .filterText{
 font-size: 16px;
+
 
 }
 .SearchBox{

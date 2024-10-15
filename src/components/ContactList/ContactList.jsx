@@ -1,9 +1,9 @@
 import ContactItem from "../ContactItem/ContactItem"
 import css from "./ContactList.module.css"
-const ContactList = ({contacts,DelContact}) => {
+const ContactList = ({contacts},  DelContact) => {
   return (
     <div>
-      <h2>ContactList</h2>
+      <h2 className={css.listTitel}>ContactList</h2>
      <ul className={css.listBox}>
       {contacts.map((contact)=> (
         <li key ={contact.id}>
