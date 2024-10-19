@@ -1,19 +1,20 @@
-import css from "./SearchBox.module.css"
+import css from "./SearchBox.module.css";
 
-
-
-const SearchBox = ({value, onFilter}) => {
+const SearchBox = ({ inputValue, onFilter }) => {
   return (
     <div className={css.SearchBox}>
-      <p className={css.filterText}>Find contact by name</p>
-      <input className={css.filterInput}
+      <p className={css.filterText}>
+        <b>Find contact by name</b>
+      </p>
+      <input
+        className={css.filterInput}
         type="text"
-        value={value}
+        value={inputValue}
         onChange={(e) => onFilter(e.target.value)}
         placeholder="abc"
       />
     </div>
-  )
-}
+  );
+};
 
-export default SearchBox
+export default SearchBox;

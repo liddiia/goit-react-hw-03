@@ -1,21 +1,27 @@
 import css from "./ComtactItem.module.css";
 
-const ContactItem = ({ name, number, id}, DelContact ) => {
+const ContactItem = ({ name, number, id, DelContact }) => {
   return (
     <div className={css.contactItem}>
-     
       <div className={css.contactItemData}>
         <p className={css.contactN}>
-          {/* {id} */}
-          <span className={css.contactItemTitel}>&#128100; Name: </span> {name}
+          <span className={css.contactItemTitel}>
+            &#128100; <b>Name:</b>{" "}
+          </span>{" "}
+          {name}
         </p>
         <p className={css.contactN}>
-    
-          <span className={css.contactItemTitel}>&#128222; Number: </span>
+          <span className={css.contactItemTitel}>
+            &#128222;<b> Number:</b>{" "}
+          </span>
           {number}
         </p>
       </div>
-      <button type="button" onClick={()=>{DelContact(id)}} className={css.contactDelButton}>
+      <button
+        onClick={() => DelContact(id)}
+        type="button"
+        className={css.contactDelButton}
+      >
         Delete
       </button>
     </div>

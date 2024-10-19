@@ -1,68 +1,71 @@
-import { useEffect, useState } from 'react';
+import { useState } from "react";
+import { useEffect } from "react";
 
-import ContactForm from "./components/ContactForm/ContactForm"
-import SearchBox from "./components/SearchBox/SearchBox"
-import ContactList from "./components/ContactList/ContactList"
-import { nanoid } from 'nanoid';
-
-
+import ContactForm from "./components/ContactForm/ContactForm";
+import SearchBox from "./components/SearchBox/SearchBox";
+import ContactList from "./components/ContactList/ContactList";
+import { nanoid } from "nanoid";
+// import { ref } from "yup";
 
 const ContactData = [
-  {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-  {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-  {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-  {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
-]
+  { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
+  { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
+  { id: "id-3", name: "Eden Clements", number: "645-17-79" },
+  { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
+];
 
 const App = () => {
-  const [contacts, setContacts]= useState(ContactData);
+  const [inputValue, setInputValue] = useState("");
 
-    // ()=>{JSON.parse(localStorage.getItem('contactsItem')) ?? ContactData });
- 
-    // useEffect(() => {
-    //   const stringifiteContactsItem = JSON.stringify(contacts);
-    //   localStorage.setItem('contactsItem', stringifiteContactsItem);
-    // }, [contacts]);
-    // 
-    const [filter, setFilter] = useState('');
+  const localStorageValue = localStorage.getItem("contacts");
 
-  const onAddContact =(formData) =>{
+  const [contacts, setContacts] = useState(() => {
+    const parsedValue = JSON.parse(localStorageValue);
+    return parsedValue ?? ContactData;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
+
+  const onAddContact = (formData) => {
     const newContact = {
       ...formData,
-      id: nanoid(),
+      id: nanoid(2),
     };
     setContacts((prevState) => [...prevState, newContact]);
   };
 
-  const DelContact = (contactId) => {
-    setContacts(contacts.filter((contact) => contactId !== contact.id))
-    }
+  const deleteContact = (contactId) => {
+    setContacts((prevContact) => {
+      return prevContact.filter((contact) => contact.id !== contactId);
+    });
+  };
 
-    // onClick={() => {
-    //   setArtists(
-    //     artists.filter(a =>
-    //       a.id !== artist.id
-    //     )
-    //   );
-    // }}
-    // const filteredUsers = contacts.filter(
-    //   (contact) =>
-    //     contact.name.toLowerCase().includes(filter.toLowerCase().trim())      );
-  
+  const serchedContacts = contacts.filter((contact) => {
+    return contact.name.toLowerCase().includes(inputValue.toLowerCase().trim());
+  });
 
   return (
-    <div>
-       <h1 style={{textAlign:"center"}}>Phonebook</h1>
-     <ContactForm onAddContact={onAddContact} />
-     
-     <SearchBox 
-     value={filter} 
-     onFilter={setFilter}/>  
-      
-      <ContactList contacts={contacts}
-      DelContact={DelContact}/>
-    </div>
-  )
-}
+    <div
+      style={{
+        display: "block",
+        flexDirection: "column",
+        marginLeft: "20px",
+      }}
+    >
+      <h1>Phonebook</h1>
+      <ContactForm onAddContact={onAddContact} />
 
-export default App
+      <SearchBox value={inputValue} onFilter={setInputValue} />
+
+      {contacts.length === 0 ? (
+        <p>Phonebook is empty. Add contacts.</p>
+      ) : (
+        <ContactList contacts={serchedContacts} deleteContact={deleteContact} />
+      )}
+    </div>
+  );
+};
+
+export default App;
