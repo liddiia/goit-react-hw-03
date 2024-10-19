@@ -5,7 +5,7 @@ import ContactForm from "./components/ContactForm/ContactForm";
 import SearchBox from "./components/SearchBox/SearchBox";
 import ContactList from "./components/ContactList/ContactList";
 import { nanoid } from "nanoid";
-// import { ref } from "yup";
+
 
 const ContactData = [
   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },

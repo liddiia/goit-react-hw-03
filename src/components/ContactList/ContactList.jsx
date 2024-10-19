@@ -14,7 +14,7 @@ const ContactList = ({ contacts, deleteContact }) => {
               DelContact={deleteContact}
             />
           </li>
-        ))}{" "}
+        ))}
       </ul>
     </div>
   );

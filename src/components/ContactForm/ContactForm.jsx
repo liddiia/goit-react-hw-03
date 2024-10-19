@@ -8,8 +8,8 @@ const ContactForm = ({ onAddContact }) => {
     onAddContact(values);
     actions.resetForm();
   };
-  const nameFieldId = nanoid();
-  const numberFieldId = nanoid();
+  const nameFieldId = nanoid(4);
+  const numberFieldId = nanoid(4);
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, "Too Short!")
